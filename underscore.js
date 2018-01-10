@@ -1,4 +1,3 @@
-
 /*
   Underscore is a library that can help us clean up our code.  It has many helpful
   function in it.  Many of which were so helpful, they have found their way
@@ -33,8 +32,7 @@
 // Look at the structure of the data, and use pluck to create an array of addresses.
 
 //
-const myEmployees = [
-  {
+const myEmployees = [{
     "_id": "59ad7afa5f5c26cc3a76c210",
     "index": 0,
     "guid": "ca95f334-3e34-4e8e-ac1b-585257fc9b57",
@@ -62,8 +60,7 @@ const myEmployees = [
       "dolor",
       "laborum"
     ],
-    "friends": [
-      {
+    "friends": [{
         "id": 0,
         "name": "White Buchanan"
       },
@@ -107,8 +104,7 @@ const myEmployees = [
       "occaecat",
       "minim"
     ],
-    "friends": [
-      {
+    "friends": [{
         "id": 0,
         "name": "Caroline Vazquez"
       },
@@ -152,8 +148,7 @@ const myEmployees = [
       "reprehenderit",
       "reprehenderit"
     ],
-    "friends": [
-      {
+    "friends": [{
         "id": 0,
         "name": "Virgie Lancaster"
       },
@@ -197,8 +192,7 @@ const myEmployees = [
       "non",
       "in"
     ],
-    "friends": [
-      {
+    "friends": [{
         "id": 0,
         "name": "Craft Summers"
       },
@@ -242,8 +236,7 @@ const myEmployees = [
       "est",
       "Lorem"
     ],
-    "friends": [
-      {
+    "friends": [{
         "id": 0,
         "name": "Morris Blevins"
       },
@@ -287,8 +280,7 @@ const myEmployees = [
       "dolore",
       "in"
     ],
-    "friends": [
-      {
+    "friends": [{
         "id": 0,
         "name": "Barber Ellis"
       },
@@ -306,11 +298,13 @@ const myEmployees = [
   }
 ]
 
-const myEmployeesAddresses = 0// use pluck to get addresses here.
+const myEmployeesAddresses = _.pluck(myEmployees, 'address')
+console.log(myEmployeesAddresses);
 
 // Now we want to use pluck to get an array of ages of the employees.
 
-const myEmployeesAges = 0 // use pluck to get ages here.
+const myEmployeesAges = _.pluck(myEmployees, 'age')
+console.log(myEmployeesAges);
 
 // union
 //  Union lets us take 2 arrays, and create a new array that only has 1 entry for
@@ -328,15 +322,17 @@ const myEmployeesAges = 0 // use pluck to get ages here.
 // Below we have two arrays of friend's email addresses.  We want to create a new
 // list of emails that does not contain duplicates.
 
-const bobFriendsEmails = ["alton.brown@gmail.com","betty.white@gmail.com","ron.paul@gmail.com",
-                          "mr.giggles@gmail.com","mrs.giggles@gmail.com","black.adder@gmail.com"];
-
+const bobFriendsEmails = ["alton.brown@gmail.com", "betty.white@gmail.com", "ron.paul@gmail.com",
+  "mr.giggles@gmail.com", "mrs.giggles@gmail.com", "black.adder@gmail.com"
+];
+console.log(bobFriendsEmails);
 const breeFriendsEmails = ["red.power@ranger.com", "pikachu@gmail.com", "james@gmail.com",
-                            "batman@gothan.gov", "betty.white@gmail.com", "mr.giggles@gmail.com",
-                            "mrs.giggles@gmail.com", "stacey@gmail.com", "brent@gmail.com", "dave@gmail.com"];
-
-const listToSendEmailsTo = 0; // Put underscore here to make list of the union of the two address.
-
+  "batman@gothan.gov", "betty.white@gmail.com", "mr.giggles@gmail.com",
+  "mrs.giggles@gmail.com", "stacey@gmail.com", "brent@gmail.com", "dave@gmail.com"
+];
+console.log(breeFriendsEmails);
+const listToSendEmailsTo = _.union(bobFriendsEmails, breeFriendsEmails);
+console.log(listToSendEmailsTo);
 
 // intersection
 //  Intersetction lets us take two arrays, and create a new array that only
@@ -349,8 +345,8 @@ const listToSendEmailsTo = 0; // Put underscore here to make list of the union o
 // Bob and Bree have decided that instead of inviting everyone they know to their
 // party.  They are instead only going to invite those people that they both know.
 
-const listOfSharedEmails = 0; // Use underscore to create the list that are in both lists
-
+const listOfSharedEmails = _.intersection(bobFriendsEmails, breeFriendsEmails);
+console.log(listOfSharedEmails);
 // groupBy
 //  Group By lets us take an array of objects, and group then into groups based
 //  on a proprty.
@@ -381,22 +377,122 @@ const listOfSharedEmails = 0; // Use underscore to create the list that are in b
 // purchases.
 
 
-const purchases = [{"month":"February","price":37.85},{"month":"January","price":73.24},{"month":"February","price":61.41},
-{"month":"April","price":41.07},{"month":"March","price":34.50},{"month":"April","price":68.52},
-{"month":"March","price":44.53},{"month":"April","price":44.95},{"month":"January","price":72.86},
-{"month":"February","price":58.96},{"month":"April","price":88.62},{"month":"April","price":32.53},
-{"month":"January","price":61.02},{"month":"April","price":22.92},{"month":"April","price":79.40},
-{"month":"April","price":13.23},{"month":"February","price":26.31},{"month":"February","price":74.30},
-{"month":"March","price":28.76},{"month":"March","price":85.51},{"month":"March","price":75.88},
-{"month":"January","price":22.83},{"month":"January","price":44.39},{"month":"February","price":22.04},
-{"month":"April","price":56.89},{"month":"February","price":86.19},{"month":"April","price":87.99},
-{"month":"January","price":14.25},{"month":"March","price":60.80},{"month":"February","price":23.65}]
+const purchases = [{
+    "month": "February",
+    "price": 37.85
+  }, {
+    "month": "January",
+    "price": 73.24
+  }, {
+    "month": "February",
+    "price": 61.41
+  },
+  {
+    "month": "April",
+    "price": 41.07
+  }, {
+    "month": "March",
+    "price": 34.50
+  }, {
+    "month": "April",
+    "price": 68.52
+  },
+  {
+    "month": "March",
+    "price": 44.53
+  }, {
+    "month": "April",
+    "price": 44.95
+  }, {
+    "month": "January",
+    "price": 72.86
+  },
+  {
+    "month": "February",
+    "price": 58.96
+  }, {
+    "month": "April",
+    "price": 88.62
+  }, {
+    "month": "April",
+    "price": 32.53
+  },
+  {
+    "month": "January",
+    "price": 61.02
+  }, {
+    "month": "April",
+    "price": 22.92
+  }, {
+    "month": "April",
+    "price": 79.40
+  },
+  {
+    "month": "April",
+    "price": 13.23
+  }, {
+    "month": "February",
+    "price": 26.31
+  }, {
+    "month": "February",
+    "price": 74.30
+  },
+  {
+    "month": "March",
+    "price": 28.76
+  }, {
+    "month": "March",
+    "price": 85.51
+  }, {
+    "month": "March",
+    "price": 75.88
+  },
+  {
+    "month": "January",
+    "price": 22.83
+  }, {
+    "month": "January",
+    "price": 44.39
+  }, {
+    "month": "February",
+    "price": 22.04
+  },
+  {
+    "month": "April",
+    "price": 56.89
+  }, {
+    "month": "February",
+    "price": 86.19
+  }, {
+    "month": "April",
+    "price": 87.99
+  },
+  {
+    "month": "January",
+    "price": 14.25
+  }, {
+    "month": "March",
+    "price": 60.80
+  }, {
+    "month": "February",
+    "price": 23.65
+  }
+]
 
-const purchasesByMonth = 0; // Use groupBy to group the purchases by the month that they were made.
-
+// Use groupBy to group the purchases by the month that they were made.
+const purchasesByMonth = _.groupBy(purchases, 'month');
+console.log(purchasesByMonth);
 // Bonus Points
-const totalByMonth = 0; // Use the groupded purchasesByMonth and reduce to create a totalByMonth object.
-
+// Use the groupded purchasesByMonth and reduce to create a totalByMonth object.
+const totalByMonth = _.reduce(purchasesByMonth, (total, val, key) => {
+  console.log('total: ', total, 'value: ', val, 'key: ', key)
+  if (!total[key]) {
+    total[key] = 0
+    total[key] += val.reduce((total, val) => total += val.price, 0)
+  }
+  return total
+}, {});
+console.log(totalByMonth)
 // memoize
 //  Memoize lets us take a function that takes a lot of time to run.  And memeorize
 //  results for that function, so if we run the function with the same parameters again,
@@ -408,7 +504,7 @@ const totalByMonth = 0; // Use the groupded purchasesByMonth and reduce to creat
 // We are using a recusive function (a function that calls itself)
 
 function slowFibonnaci(n) {
-  return n < 2 ? n: slowFibonnaci(n - 1) + slowFibonnaci(n - 2);
+  return n < 2 ? n : slowFibonnaci(n - 1) + slowFibonnaci(n - 2);
 }
 
 // When ready to test uncoment the 3 lines below.  If you have a fast computer,
@@ -445,8 +541,8 @@ let fastFibonnaci = 0; // use memoize to create a fast fibonnaci.  Use the same
 
 // Here we have a regular axios call to a server.
 
-let getDeathstar = function(n){
-  return axios.get('https://swapi.co/api/starships/'+n)
+let getDeathstar = function (n) {
+  return axios.get('https://swapi.co/api/starships/' + n)
 }
 
 // Below we can measure the time it takes to get a return from the api call.
@@ -460,29 +556,29 @@ let getDeathstar = function(n){
 // getPersonApi `https://swapi.co/api/people/${n}`
 
 let getJedi = // Use Memoize to remeber the previous calls made to the server
-// then compare the times for the first and second calls of both the getJedi and
-// getDeathstar functions
-// There are no unit tests for this section. But play around with the
-// console.time, and console.timeEnd functions so you can use them to measure
-// the time it takes for various parts of your code to run.  This can be
-// helpful in finding slow parts of your code that you want to improve.
-
-// console.time('getJedi')
-// getJedi(1).then(e=>{
-//   console.log(e.data)
-//   console.timeEnd('getJedi')
-// });
-
-setTimeout(()=>{
-  // console.time('getDeathstar')
-  // getDeathstar(9).then(e=>{
-  //   console.log(e.data)
-  //   console.timeEnd('getDeathstar')
-  // });
+  // then compare the times for the first and second calls of both the getJedi and
+  // getDeathstar functions
+  // There are no unit tests for this section. But play around with the
+  // console.time, and console.timeEnd functions so you can use them to measure
+  // the time it takes for various parts of your code to run.  This can be
+  // helpful in finding slow parts of your code that you want to improve.
 
   // console.time('getJedi')
   // getJedi(1).then(e=>{
   //   console.log(e.data)
   //   console.timeEnd('getJedi')
   // });
-}, 2000)
+
+  setTimeout(() => {
+    // console.time('getDeathstar')
+    // getDeathstar(9).then(e=>{
+    //   console.log(e.data)
+    //   console.timeEnd('getDeathstar')
+    // });
+
+    // console.time('getJedi')
+    // getJedi(1).then(e=>{
+    //   console.log(e.data)
+    //   console.timeEnd('getJedi')
+    // });
+  }, 2000)
